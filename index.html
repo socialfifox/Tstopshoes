@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TS Top Shoes - tenis premium em Ijui-RS, com entregas e envios para todo o Brasil.">
+  <title>TS Top Shoes | Tenis Premium</title>
+  <link rel="icon" type="image/jpeg" href="assets/brand/logo-ts-top-shoes.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="shop-page">
+  <div class="announcement">Entrega em Ijui e regiao | Envios para todo Brasil</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="TS Top Shoes - Inicio">
+      <img class="brand-logo" src="assets/brand/logo-ts-top-shoes.jpg" alt="Logo TS Top Shoes">
+      <span><strong>Top Shoes</strong><small>calcados premium</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Principal">
+      <a href="#catalogo">Catalogo</a>
+      <a href="#vantagens">Como comprar</a>
+      <a href="https://www.instagram.com/tstop_shoes/" target="_blank" rel="noopener">Instagram</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div class="header-actions">
+      <button class="account-button" id="open-account" type="button">Minha conta</button>
+      <button class="cart-button" id="open-cart" type="button" aria-label="Abrir sacola">
+        Sacola <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="store-banner" aria-label="Identidade TS Top Shoes">
+    <img src="assets/brand/header-ts-top-shoes.png" alt="TS Top Shoes - Step into Excellence">
+  </section>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">IJUI - RS</p>
+        <h1>O tenis certo muda o ritmo.</h1>
+        <p class="hero-text">Modelos selecionados, entrega na sua casa e envio para qualquer lugar do Brasil.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalogo">Ver lancamentos</a>
+          <a class="button button-ghost" href="https://www.instagram.com/tstop_shoes/" target="_blank" rel="noopener">@tstop_shoes</a>
+        </div>
+        <div class="trust-strip">
+          <span>Entrega local</span>
+          <span>Envio nacional</span>
+          <span>Pague na entrega*</span>
+        </div>
+        <small class="muted">*Condicao divulgada pela loja; confirme disponibilidade no atendimento.</small>
+      </div>
+      <div class="hero-media">
+        <img src="assets/products/instagram-product-3.jpg" alt="Tenis New Balance disponivel na TS Top Shoes">
+        <div class="hero-floating">
+          <strong>Novidades toda semana</strong>
+          <span>Direto do Instagram da loja</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" id="vantagens">
+      <article>
+        <span class="benefit-number">01</span>
+        <h2>Escolha</h2>
+        <p>Veja os modelos e escolha a numeracao disponivel.</p>
+      </article>
+      <article>
+        <span class="benefit-number">02</span>
+        <h2>Peca</h2>
+        <p>Monte sua sacola e envie o pedido para atendimento.</p>
+      </article>
+      <article>
+        <span class="benefit-number">03</span>
+        <h2>Receba</h2>
+        <p>Entrega em Ijui e regiao ou envio para todo Brasil.</p>
+      </article>
+    </section>
+
+    <section class="catalog" id="catalogo">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CATALOGO</p>
+          <h2>Escolha seu proximo par</h2>
+        </div>
+        <label class="search">
+          <span class="sr-only">Pesquisar produto</span>
+          <input id="product-search" type="search" placeholder="Buscar modelo ou marca">
+        </label>
+      </div>
+      <div class="filter-row" id="category-filters" aria-label="Filtros de categoria"></div>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="instagram-banner">
+      <img src="assets/products/instagram-product-6.webp" alt="Tenis Adidas em exposicao no catalogo da TS Top Shoes">
+      <div>
+        <p class="eyebrow">ATENDIMENTO</p>
+        <h2>Compra simples, atendimento direto.</h2>
+        <p>Acompanhe os lancamentos, tire duvidas e confirme seu pedido com a loja.</p>
+        <a class="button button-primary" href="https://www.instagram.com/tstop_shoes/" target="_blank" rel="noopener">Abrir Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand">
+      <img class="brand-logo" src="assets/brand/logo-ts-top-shoes.jpg" alt="Logo TS Top Shoes">
+      <span><strong>Top Shoes</strong><small>Ijui - RS</small></span>
+    </div>
+    <p>Entrega local e envio para todo Brasil.</p>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/tstop_shoes/" target="_blank" rel="noopener">@tstop_shoes</a>
+      <a href="admin.html">Painel admin</a>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="cart-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Sua sacola</h2>
+      <button class="icon-button" id="close-cart" type="button" aria-label="Fechar sacola">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="drawer-footer">
+      <div class="cart-total"><span>Total</span><strong id="cart-total">Sob consulta</strong></div>
+      <button class="button button-primary button-block" id="begin-checkout" type="button">Finalizar pedido</button>
+    </div>
+  </aside>
+  <div class="overlay" id="drawer-overlay" hidden></div>
+
+  <dialog class="product-dialog" id="product-dialog">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Fechar">&times;</button>
+    <div id="product-detail"></div>
+  </dialog>
+
+  <dialog class="checkout-dialog" id="checkout-dialog">
+    <button class="dialog-close" type="button" data-close-checkout aria-label="Fechar">&times;</button>
+    <div class="checkout-content">
+      <p class="eyebrow">FINALIZAR</p>
+      <h2>Dados para o pedido</h2>
+      <section class="customer-auth" id="customer-auth">
+        <div class="auth-tabs">
+          <button class="active" type="button" data-auth-view="login">Entrar</button>
+          <button type="button" data-auth-view="register">Criar conta</button>
+        </div>
+        <form id="customer-login-form" class="auth-form">
+          <div class="modal-alert" id="checkout-login-alert" hidden></div>
+          <label>Login<input name="login" required autocomplete="username"></label>
+          <label>Senha<input type="password" name="password" required autocomplete="current-password"></label>
+          <button class="button button-primary button-block" type="submit">Entrar para comprar</button>
+          <button class="text-button forgot-button" type="button" data-open-password-reset>Esqueci a senha</button>
+        </form>
+        <form id="customer-register-form" class="auth-form" hidden>
+          <div class="modal-alert" id="checkout-register-alert" hidden></div>
+          <label>Nome completo<input name="name" required autocomplete="name"></label>
+          <label>Login<input name="login" required autocomplete="username"></label>
+          <label>Senha<input type="password" name="password" required autocomplete="new-password"></label>
+          <label>WhatsApp<input name="phone" required inputmode="tel" autocomplete="tel"></label>
+          <button class="button button-primary button-block" type="submit">Criar conta e continuar</button>
+        </form>
+      </section>
+      <div class="customer-signed" id="customer-signed" hidden>
+        <div>
+          <strong id="customer-name"></strong>
+          <span>Cliente conectado</span>
+        </div>
+        <button class="text-button" id="customer-logout" type="button">Sair</button>
+      </div>
+      <form id="checkout-form" hidden>
+        <div class="modal-alert" id="checkout-alert" hidden></div>
+        <label>WhatsApp<input name="phone" required inputmode="tel" autocomplete="tel"></label>
+        <fieldset class="address-box">
+          <legend>Endereco de entrega</legend>
+          <label id="address-select-wrap">Endereco cadastrado
+            <select name="addressId" id="checkout-address-select"></select>
+          </label>
+          <button class="text-button address-toggle" id="new-checkout-address" type="button">Adicionar outro endereco</button>
+          <div class="address-fields" id="checkout-address-fields" hidden>
+            <label>Identificacao<input name="addressLabel" placeholder="Casa, Trabalho"></label>
+            <label>Rua / Avenida<input name="street"></label>
+            <div class="two-fields">
+              <label>Numero<input name="number"></label>
+              <label>Complemento<input name="complement"></label>
+            </div>
+            <div class="two-fields">
+              <label>Bairro<input name="neighborhood"></label>
+              <label>CEP<input name="zip"></label>
+            </div>
+            <div class="two-fields">
+              <label>Cidade<input name="addressCity"></label>
+              <label>Estado<select name="state" class="state-select"></select></label>
+            </div>
+            <button class="button button-ghost button-block" id="save-checkout-address" type="button">Salvar endereco</button>
+          </div>
+        </fieldset>
+        <label>Entrega
+          <select name="delivery">
+            <option>Entrega em Ijui e regiao</option>
+            <option>Envio para outra cidade</option>
+          </select>
+        </label>
+        <label>Observacoes<textarea name="notes" rows="3" placeholder="Cor, endereco ou duvidas"></textarea></label>
+        <button class="button button-primary button-block" type="submit">Confirmar pedido</button>
+      </form>
+      <p class="muted checkout-note">Seu pedido sera registrado na loja e acompanhado pelo painel administrativo.</p>
+    </div>
+  </dialog>
+
+  <dialog class="account-dialog" id="account-dialog">
+    <button class="dialog-close" type="button" data-close-account aria-label="Fechar">&times;</button>
+    <div class="account-content">
+      <p class="eyebrow">MINHA CONTA</p>
+      <h2>Dados do cliente</h2>
+      <section id="account-guest">
+        <div class="modal-alert" id="account-login-alert" hidden></div>
+        <form id="account-login-form" class="stack-form">
+          <label>Login<input name="login" required></label>
+          <label>Senha<input type="password" name="password" required></label>
+          <button class="button button-primary button-block" type="submit">Entrar na conta</button>
+          <button class="text-button forgot-button" type="button" data-open-password-reset>Esqueci a senha</button>
+        </form>
+        <p class="muted account-note">Novas contas podem ser criadas ao finalizar uma compra.</p>
+      </section>
+      <div class="account-tabs" id="account-tabs" hidden>
+        <button class="active" type="button" data-account-view="profile">Meus dados</button>
+        <button type="button" data-account-view="orders">Pedidos</button>
+      </div>
+      <form id="account-form" class="stack-form" hidden>
+        <div class="modal-alert" id="account-alert" hidden></div>
+        <label>Nome completo<input name="name" required></label>
+        <label>Login<input name="login" required></label>
+        <label>WhatsApp<input name="phone" required></label>
+        <div class="two-fields">
+          <label>Senha atual<input type="password" name="currentPassword" placeholder="Obrigatoria para trocar senha"></label>
+          <label>Nova senha<input type="password" name="password" placeholder="Deixe vazio para manter"></label>
+        </div>
+        <div class="address-manager">
+          <div class="address-heading">
+            <strong>Enderecos cadastrados</strong>
+            <button class="text-button" id="add-account-address" type="button">Novo endereco</button>
+          </div>
+          <div id="account-address-list"></div>
+          <div class="address-fields" id="account-address-fields" hidden>
+            <input type="hidden" name="addressId">
+            <label>Identificacao<input name="addressLabel" placeholder="Casa"></label>
+            <label>Rua / Avenida<input name="street"></label>
+            <div class="two-fields">
+              <label>Numero<input name="number"></label>
+              <label>Complemento<input name="complement"></label>
+            </div>
+            <div class="two-fields">
+              <label>Bairro<input name="neighborhood"></label>
+              <label>CEP<input name="zip"></label>
+            </div>
+            <div class="two-fields">
+              <label>Cidade<input name="addressCity"></label>
+              <label>Estado<select name="state" class="state-select"></select></label>
+            </div>
+            <button class="button button-ghost button-block" id="save-account-address" type="button">Salvar endereco</button>
+          </div>
+        </div>
+        <div class="account-actions">
+          <button class="button button-primary" type="submit">Salvar meus dados</button>
+          <button class="button button-ghost" id="account-logout" type="button">Sair da conta</button>
+        </div>
+      </form>
+      <section class="account-orders" id="account-orders" hidden>
+        <div id="account-orders-list"></div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="account-dialog order-dialog" id="account-order-dialog">
+    <button class="dialog-close" type="button" data-close-account-order aria-label="Fechar">&times;</button>
+    <div class="account-content" id="account-order-detail"></div>
+  </dialog>
+
+  <dialog class="account-dialog" id="password-reset-dialog">
+    <button class="dialog-close" type="button" data-close-password-reset aria-label="Fechar">&times;</button>
+    <div class="account-content">
+      <p class="eyebrow">RECUPERAR SENHA</p>
+      <h2>Esqueci a senha</h2>
+      <form id="password-reset-form" class="stack-form">
+        <div class="modal-alert" id="password-reset-alert" hidden></div>
+        <label>Login ou telefone cadastrado<input name="identifier" required placeholder="Seu login ou WhatsApp"></label>
+        <button class="button button-primary button-block" type="submit">Solicitar troca de senha</button>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog class="success-dialog" id="success-dialog">
+    <button class="dialog-close" type="button" data-close-success aria-label="Fechar">&times;</button>
+    <div class="success-content">
+      <span class="success-check">OK</span>
+      <p class="eyebrow">PEDIDO RECEBIDO</p>
+      <h2>Compra registrada!</h2>
+      <p id="success-message"></p>
+      <button class="button button-primary button-block" type="button" data-close-success>Continuar comprando</button>
+    </div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin | TS Top Shoes</title>
+  <link rel="icon" type="image/jpeg" href="assets/brand/logo-ts-top-shoes.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+  <section class="login-panel" id="admin-login">
+    <div class="login-card">
+      <a class="brand" href="index.html">
+        <img class="brand-logo brand-logo-large" src="assets/brand/logo-ts-top-shoes.jpg" alt="Logo TS Top Shoes">
+        <span><strong>Top Shoes</strong><small>Painel administrativo</small></span>
+      </a>
+      <p class="eyebrow">ACESSO RESTRITO</p>
+      <h1>Gerencie sua loja</h1>
+      <form id="login-form" class="stack-form">
+        <div class="modal-alert" id="admin-login-alert" hidden></div>
+        <label>Usuario<input name="username" required autocomplete="username"></label>
+        <label>Senha<input type="password" name="password" required autocomplete="current-password"></label>
+        <button class="button button-primary button-block" type="submit">Entrar</button>
+      </form>
+      <p class="login-hint">Acesso inicial: <strong>admin</strong> / <strong>topshoes2026</strong></p>
+      <button class="reset-access" id="reset-access" type="button">Restaurar acesso inicial</button>
+    </div>
+  </section>
+
+  <div class="dashboard" id="dashboard" hidden>
+    <aside class="admin-sidebar">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/brand/logo-ts-top-shoes.jpg" alt="Logo TS Top Shoes">
+        <span><strong>Top Shoes</strong><small>Admin</small></span>
+      </a>
+      <nav class="admin-nav">
+        <button class="active" data-panel="overview">Resumo</button>
+        <button data-panel="products">Produtos</button>
+        <button data-panel="orders">Pedidos</button>
+        <button data-panel="customers">Clientes</button>
+        <button data-panel="support">Suporte</button>
+        <button data-panel="settings">Configuracoes</button>
+      </nav>
+      <a class="button button-ghost button-block" href="index.html">Ver loja</a>
+      <button class="logout-link" id="logout" type="button">Sair do painel</button>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">PAINEL ADMIN</p>
+          <h1 id="panel-title">Resumo</h1>
+        </div>
+        <p class="admin-date" id="admin-date"></p>
+      </header>
+
+      <section class="admin-panel active" data-panel-content="overview">
+        <div class="metric-grid" id="metrics"></div>
+        <div class="admin-card recent-orders">
+          <div class="card-heading"><h2>Ultimos pedidos</h2><button class="text-button" data-open-panel="orders">Ver todos</button></div>
+          <div id="recent-orders"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-panel-content="products">
+        <div class="panel-tools">
+          <div class="admin-filters">
+            <label>Categoria
+              <select id="product-category-filter"></select>
+            </label>
+            <label>Buscar
+              <input id="product-search-filter" type="search" placeholder="Nome ou marca">
+            </label>
+          </div>
+          <button class="button button-primary" id="new-product" type="button">Novo produto</button>
+        </div>
+        <div class="admin-card table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Produto</th><th>Preco</th><th>Tamanhos</th><th>Status</th><th></th></tr></thead>
+            <tbody id="products-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-panel-content="orders">
+        <div class="panel-tools">
+          <div class="admin-filters">
+            <label>Status
+              <select id="order-status-filter">
+                <option value="">Todos os status</option>
+                <option>Novo</option>
+                <option>Em atendimento</option>
+                <option>Enviado</option>
+                <option>Concluido</option>
+                <option>Cancelado</option>
+              </select>
+            </label>
+            <label>Buscar
+              <input id="order-search-filter" type="search" placeholder="Pedido ou cliente">
+            </label>
+          </div>
+        </div>
+        <div class="admin-card table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Pedido</th><th>Cliente</th><th>Itens</th><th>Entrega</th><th>Status</th></tr></thead>
+            <tbody id="orders-table"></tbody>
+          </table>
+        </div>
+        <div class="admin-card history-card table-wrap">
+          <div class="card-heading">
+            <h2>Historico de pedidos</h2>
+            <p class="muted">Inclui pedidos excluidos</p>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Pedido</th><th>Cliente</th><th>Data</th><th>Situacao</th><th></th></tr></thead>
+            <tbody id="order-history-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-panel-content="customers">
+        <div class="panel-tools">
+          <div class="admin-filters">
+            <label>Buscar cliente
+              <input id="customer-search-filter" type="search" placeholder="Nome, login ou telefone">
+            </label>
+          </div>
+          <button class="button button-primary" id="new-customer" type="button">Novo cliente</button>
+        </div>
+        <div class="admin-card table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Cliente</th><th>Login</th><th>Contato</th><th>Status</th><th></th></tr></thead>
+            <tbody id="customers-table"></tbody>
+          </table>
+        </div>
+        <div class="admin-card history-card table-wrap">
+          <div class="card-heading">
+            <h2>Historico de clientes excluidos</h2>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th>Cliente</th><th>Login</th><th>Excluido em</th><th></th></tr></thead>
+            <tbody id="customer-history-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-panel-content="support">
+        <div class="admin-card table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Solicitacao</th><th>Cliente</th><th>Dado informado</th><th>Status</th><th></th></tr></thead>
+            <tbody id="support-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-panel-content="settings">
+        <form id="settings-form" class="admin-card settings-form">
+          <h2>Atendimento e acesso</h2>
+          <div class="modal-alert" id="settings-alert" hidden></div>
+          <label>Nome da loja<input name="storeName" required></label>
+          <label>Instagram<input name="instagram" required></label>
+          <label>WhatsApp da loja (cadastro interno)<input name="whatsapp" inputmode="numeric" placeholder="5555999999999"></label>
+          <label>Texto de entrega<textarea name="shippingText" rows="3"></textarea></label>
+          <hr>
+          <label>Nova senha do painel<input type="password" name="newPassword" placeholder="Deixe vazio para manter atual"></label>
+          <button class="button button-primary" type="submit">Salvar configuracoes</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="admin-dialog" id="product-form-dialog">
+    <button class="dialog-close" type="button" data-close-product-form aria-label="Fechar">&times;</button>
+    <form id="product-form" class="stack-form">
+      <input type="hidden" name="id">
+      <p class="eyebrow">PRODUTO</p>
+      <h2 id="product-form-title">Novo produto</h2>
+      <div class="modal-alert" id="product-form-alert" hidden></div>
+      <label>Nome<input name="name" required></label>
+      <div class="two-fields">
+        <label>Marca
+          <span class="select-action"><select name="brand" required></select><button class="mini-button" id="add-brand" type="button">+</button></span>
+        </label>
+        <label>Categoria
+          <span class="select-action"><select name="categories" multiple size="4" required></select><button class="mini-button" id="add-category" type="button">+</button></span>
+        </label>
+      </div>
+      <div class="two-fields">
+        <label>Preco (R$)<input type="number" name="price" min="0" step="0.01" placeholder="Opcional"></label>
+        <label>Tamanhos<input name="sizes" required placeholder="38, 39, 40"></label>
+      </div>
+      <label>Imagem do produto
+        <input type="file" name="imageFile" accept="image/png,image/jpeg,image/webp">
+      </label>
+      <div class="image-preview" id="product-image-preview">
+        <span>Nenhuma imagem selecionada</span>
+      </div>
+      <label>Descricao<textarea name="description" rows="3" required></textarea></label>
+      <div class="checkbox-row">
+        <label><input type="checkbox" name="featured"> Destaque</label>
+        <label><input type="checkbox" name="active" checked> Publicado</label>
+      </div>
+      <button class="button button-primary button-block" type="submit">Salvar produto</button>
+    </form>
+  </dialog>
+  <dialog class="nested-modal" id="taxonomy-modal">
+    <form class="nested-modal-card stack-form" id="taxonomy-form">
+      <p class="eyebrow" id="taxonomy-eyebrow">NOVO CADASTRO</p>
+      <h2 id="taxonomy-title">Adicionar</h2>
+      <div class="modal-alert" id="taxonomy-alert" hidden></div>
+      <input type="hidden" name="type">
+      <label id="taxonomy-label">Nome<input name="value" required></label>
+      <div class="confirm-actions">
+        <button class="button button-ghost" type="button" data-close-taxonomy>Cancelar</button>
+        <button class="button button-primary" type="submit">Adicionar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="admin-dialog" id="customer-form-dialog">
+    <button class="dialog-close" type="button" data-close-customer-form aria-label="Fechar">&times;</button>
+    <form id="customer-form" class="stack-form">
+      <input type="hidden" name="id">
+      <p class="eyebrow">CLIENTE</p>
+      <h2 id="customer-form-title">Novo cliente</h2>
+      <div class="modal-alert" id="customer-form-alert" hidden></div>
+      <label>Nome completo<input name="name" required></label>
+      <label>Login<input name="login" required autocomplete="username"></label>
+      <div class="two-fields">
+        <label>WhatsApp<input name="phone" required inputmode="tel"></label>
+        <label>Nova senha<input type="password" name="password" placeholder="Obrigatoria para novo cliente"></label>
+      </div>
+      <div class="address-manager">
+        <div class="address-heading">
+          <strong>Enderecos do cliente</strong>
+          <button class="text-button" id="add-admin-address" type="button">Novo endereco</button>
+        </div>
+        <div id="admin-address-list"></div>
+        <div class="address-fields" id="admin-address-fields" hidden>
+          <input type="hidden" name="addressId">
+          <label>Identificacao<input name="addressLabel" placeholder="Casa"></label>
+          <label>Rua / Avenida<input name="street"></label>
+          <div class="two-fields"><label>Numero<input name="number"></label><label>Complemento<input name="complement"></label></div>
+          <div class="two-fields"><label>Bairro<input name="neighborhood"></label><label>CEP<input name="zip"></label></div>
+          <div class="two-fields"><label>Cidade<input name="addressCity"></label><label>Estado<select name="state" class="state-select"></select></label></div>
+          <button class="button button-ghost button-block" id="save-admin-address" type="button">Salvar endereco</button>
+        </div>
+      </div>
+      <label class="checkbox-inline"><input type="checkbox" name="active" checked> Cliente ativo</label>
+      <button class="button button-primary button-block" type="submit">Salvar cliente</button>
+    </form>
+  </dialog>
+  <dialog class="admin-dialog order-dialog" id="order-detail-dialog">
+    <button class="dialog-close" type="button" data-close-order-detail aria-label="Fechar">&times;</button>
+    <div id="order-detail-content"></div>
+  </dialog>
+  <dialog class="admin-dialog" id="support-reset-dialog">
+    <button class="dialog-close" type="button" data-close-support-reset aria-label="Fechar">&times;</button>
+    <form id="support-reset-form" class="stack-form">
+      <input type="hidden" name="requestId">
+      <p class="eyebrow">SUPORTE</p>
+      <h2>Alterar senha</h2>
+      <div class="modal-alert" id="support-form-alert" hidden></div>
+      <p id="support-customer-label" class="muted"></p>
+      <label>Nova senha do cliente<input type="password" name="password" required></label>
+      <button class="button button-primary button-block" type="submit">Salvar nova senha</button>
+    </form>
+  </dialog>
+  <dialog class="confirm-dialog" id="admin-confirm-dialog">
+    <div class="confirm-content">
+      <p class="eyebrow">CONFIRMAR</p>
+      <h2 id="confirm-title">Confirmar acao</h2>
+      <p id="confirm-message"></p>
+      <div class="confirm-actions">
+        <button class="button button-ghost" id="cancel-confirm" type="button">Cancelar</button>
+        <button class="button button-primary" id="accept-confirm" type="button">Confirmar</button>
+      </div>
+    </div>
+  </dialog>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
